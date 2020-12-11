@@ -52,6 +52,6 @@
 <use   name="DataFormats/METReco"/>
 <use   name="JetMETCorrections/Algorithms"/>
 <use   name="JetMETCorrections/JetCorrector"/>
-<use   name="CondCore/DBCommon"/>
+<!--use   name="CondCore/DBCommon"/-->
 <use   name="JetMETCorrections/Modules"/>
 <flags EDM_PLUGIN="1"/>

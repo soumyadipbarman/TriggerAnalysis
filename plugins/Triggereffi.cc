@@ -134,12 +134,11 @@ using namespace CLHEP;
 using namespace trigger;
 using namespace math;
 
-const int nHLTmx = 554;      //553         //Total Number of Trigger ** previous 448
+const int nHLTmx = 553;             //Total Number of Trigger ** previous 448/553
 static const  int nMuHLTmx=11;      // muon trigger number
-//static const int nDiJetHLTmx=9;     //DiJet Trigger no.
-static const int nJetHLTmx=11;       //single PFJet Trigger no.
-
-const int njetetamn=1;                     // one eta space is choosen 
+//static const int nDiJetHLTmx=9;   //DiJet Trigger no.
+static const int nJetHLTmx=11;      //single PFJet Trigger no.
+const int njetetamn=1;              // one eta space is choosen 
 
 const char* jethlt_name[nJetHLTmx]={"HLT_PFJet40_v",
                                     "HLT_PFJet60_v",
@@ -154,12 +153,15 @@ const char* jethlt_name[nJetHLTmx]={"HLT_PFJet40_v",
 				    "HLT_PFJet550_v"};
 
 //const char* dijethlt_name[nDiJetHLTmx]={"HLT_DiPFJetAve60_v","HLT_DiPFJetAve80_v", "HLT_DiPFJetAve140_v", "HLT_DiPFJetAve200_v", "HLT_DiPFJetAve260_v", "HLT_DiPFJetAve320_v", "HLT_DiPFJetAve400_v", "HLT_DiPFJetAve500_v"};                           // Di-Jet Trigger Name
-//const char* dijethlt_name[nDiJetHLTmx]={"HLT_DiPFJetAve40_v","HLT_DiPFJetAve60_v","HLT_DiPFJetAve80_v", "HLT_DiPFJetAve140_v", "HLT_DiPFJetAve200_v", "HLT_DiPFJetAve260_v", "HLT_DiPFJetAve320_v", "HLT_DiPFJetAve400_v", "HLT_DiPFJetAve500_v"};                           // Di-Jet Trigger Name
 
+//const char* dijethlt_name[nDiJetHLTmx]={"HLT_DiPFJetAve40_v","HLT_DiPFJetAve60_v","HLT_DiPFJetAve80_v", "HLT_DiPFJetAve140_v", "HLT_DiPFJetAve200_v", "HLT_DiPFJetAve260_v", "HLT_DiPFJetAve320_v", "HLT_DiPFJetAve400_v", "HLT_DiPFJetAve500_v"};                           // Di-Jet Trigger Name
 
 //const char* dijethlt_label[nDiJetHLTmx]={"hltDiPFJetAve40","hltDiPFJetAve60","hltDiPFJetAve80", "hltDiPFJetAve140", "hltDiPFJetAve200", "hltDiPFJetAve260", "hltDiPFJetAve320", "hltDiPFJetAve400", "hltDiPFJetAve500"};                           // Di-Jet Trigger Name
 
-const char* jethlt_label[nJetHLTmx]={"hltPFJetAve40","hltPFJetAve60","hltPFJetAve80", "hltPFJetAve140", "hltPFJetAve200", "hltPFJetAve260", "hltPFJetAve320", "hltPFJetAve400","hltPFJetAve450", "hltPFJetAve500", "hltPFJetAve550"};
+//const char* jethlt_label[nJetHLTmx]={"hltPFJetAve40","hltPFJetAve60","hltPFJetAve80", "hltPFJetAve140", "hltPFJetAve200", "hltPFJetAve260", "hltPFJetAve320", "hltPFJetAve400","hltPFJetAve450", "hltPFJetAve500", "hltPFJetAve550"};              // Single Jet Trigger name
+
+const char* jethlt_label[nJetHLTmx]={"hltSinglePFJet40","hltSinglePFJet60","hltSinglePFJet80", "hltSinglePFJet140", "hltSinglePFJet200", "hltSinglePFJet260", "hltSinglePFJet320", "hltSinglePFJet400","hltSinglePFJet450", "hltSinglePFJet500", "hltSinglePFJet550"};   // Single Jet Trigger Name
+
 const char* muhlt_name[nMuHLTmx]={"HLT_IsoMu17_eta2p1_", //63
                                   "HLT_IsoMu20_", //72
                                   "HLT_IsoMu30_", // 71
@@ -181,7 +183,7 @@ double jethlt_thr[nJetHLTmx]={40,60,80,140,200,260,320,400,450,500,550};   // OK
 double leadingPtThreshold[nJetHLTmx]={40,60,80,140,200,260,320,400,450,500,550};   // new
 //const char* jethlt_lowest={"HLT_DiPFJetAve40_v"};
 const char* jethlt_lowest={"HLT_PFJet40_v"};      // OK
-double etarange[njetetamn] ={2.4};                // OK
+double etarange[njetetamn] ={2.5};                // OK
 bool trgpas[nJetHLTmx];//={0,0,0,0,0,0,0,0};      // OK
 
 
@@ -239,9 +241,9 @@ private:
 //ggerPrescales_ 
  virtual void beginRun(const edm::Run&, const edm::EventSetup&) override;
  
-  //Dijet trigger efficiency
-//  TH1F* hlt_dijettag[nDiJetHLTmx][njetetamn];
-//  TH1F* hlt_dijetprob[nDiJetHLTmx][njetetamn];
+//Dijet trigger efficiency
+//TH1F* hlt_dijettag[nDiJetHLTmx][njetetamn];
+//TH1F* hlt_dijetprob[nDiJetHLTmx][njetetamn];
   
   TH1F* hlt_dijettrg_fired[nJetHLTmx][njetetamn];
   TH1F* hlt_dijettrg_all_evt[nJetHLTmx][njetetamn];
@@ -288,7 +290,7 @@ private:
 // constructors and destructor
 //
 Triggereffi::Triggereffi(const edm::ParameterSet& iConfig):
-  //  tracksToken_(consumes<TrackCollection>(iConfig.getUntrackedParameter<edm::InputTag>("tracks")))
+  //tracksToken_(consumes<TrackCollection>(iConfig.getUntrackedParameter<edm::InputTag>("tracks")))
   generator1_(consumes<GenEventInfoProduct>(iConfig.getParameter<edm::InputTag>("evtinfo"))),
   MuonToken_(consumes<pat::MuonCollection>(iConfig.getParameter<edm::InputTag>("muonSrc"))),  //Edited
   jetSrcToken_(consumes<pat::JetCollection>(iConfig.getParameter<edm::InputTag>("jetSrc"))),
@@ -359,7 +361,7 @@ Triggereffi::Triggereffi(const edm::ParameterSet& iConfig):
     }
   }
   
-  nevt=0;  //event counter
+  nevt=0;   //event counter
   ntrig=0;  //event counter
   
   
@@ -450,25 +452,26 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     for(unsigned ij = 0; ij != size; ij++) {
       std::string name = triggerNames.triggerName(ij);
       if(nevt==1)  {cout <<"inclu:hltobject "<<" "<<ij<<" "<<name<<endl;}
-      //  if(trigRes->accept(ij)){cout << "trigger accepted  for : " << name << endl;}  
-      variab1 = name.c_str();
-      //      if(trigRes->accept(ij)){cout << "trigger accepted  for (cross checked) : " << variab1 << endl;} 
+      	//if(trigRes->accept(ij)){cout << "trigger accepted  for : " << name << endl;}  
+      	variab1 = name.c_str();
+      	//if(trigRes->accept(ij)){cout << "trigger accepted  for (cross checked) : " << variab1 << endl;} 
       
       //Check for muon trigger
       for (unsigned kl=0; kl<nMuHLTmx; kl++) {
 	if ((strstr(variab1,muhlt_name[kl])) && strlen(variab1)-strlen(muhlt_name[kl])<5) {
-	  //            cout << "singleMu Trigger Name : " << variab1 << endl;
+	  //cout << "singleMu Trigger Name : " << variab1 << endl;
 	  hltmu_list[ij] = kl;
 	  mutrig=true;
 	  break;
 	}
       }
       
-      //check for DijetHLT trigger
+      //check for single-jetHLT trigger
       for (unsigned kl=0; kl<nJetHLTmx; kl++) {
-	if ((strstr(variab1,jethlt_name[kl])) && strlen(variab1)-strlen(jethlt_name[kl])<5) {     // why here is <5 included ? 
+	if ((strstr(variab1,jethlt_name[kl])) && strlen(variab1)-strlen(jethlt_name[kl])<5) {    
+        //if (strstr(variab1,jethlt_name[kl])) {
 	  hltdijet_list[ij] = kl; 
-	        cout << variab1 <<  endl; 
+	  //cout <<"First check :"<< variab1 <<  endl; 
 	  dijtrig=true; 
 	  break;
 	}
@@ -481,14 +484,13 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   if (!mutrig) return;
   if (!dijtrig) return;
   
-  //*********************************************
+  //**************************************************
   
-  
- cout << "Ok 3 " << endl; 
+  cout << "Ok 3 " << endl; 
   
   //**************************************************
   //Calculate average Pt 
-  if (ak4PFJets.isValid() &&  ak4PFJets->size()>1) {     // check if we need greter than 0 or 1 jet
+/*  if (ak4PFJets.isValid() &&  ak4PFJets->size()>1) {     // check if we need greter than 0 or 1 jet
     for (int iet=0; iet<njetetamn; iet++) {
       isInEtaRange[iet] = true;
     }
@@ -525,8 +527,46 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     }
     aveleadingpt /=1.0;
     
-  } // calculation of average pt
+  }
+*/ // calculation of average pt
   //***********************************************************
+
+  if (ak4PFJets.isValid() &&  ak4PFJets->size()>1) {     // check if we need greter than 0 or 1 jet
+    for (int iet=0; iet<njetetamn; iet++) {
+      isInEtaRange[iet] = true;
+    }
+  for (int iet=0; iet<njetetamn; iet++) {
+        if (abs((*ak4PFJets)[0].eta())>etarange[iet]) { isInEtaRange[iet] = false;}
+      }
+      //Jet ID ================= Tight ID 2017 Recomendation added as https://twiki.cern.ch/twiki/bin/viewauth/CMS/JetID13TeVRun2017
+      double NHF = (*ak4PFJets)[0].neutralHadronEnergyFraction();
+      double NEMF = (*ak4PFJets)[0].neutralEmEnergyFraction();
+      double CHF = (*ak4PFJets)[0].chargedHadronEnergyFraction();
+      double  MUF  = (*ak4PFJets)[0].muonEnergyFraction();
+      double CEMF = (*ak4PFJets)[0].chargedEmEnergyFraction();
+      int NumConst = (*ak4PFJets)[0].chargedMultiplicity()+(*ak4PFJets)[0].neutralMultiplicity();
+      //int NumNeutralParticles =(*ak4PFJets)[ij].neutralMultiplicity();
+      int CHM = (*ak4PFJets)[0].chargedMultiplicity();
+      bool TightJetID =false;
+      if(abs((*ak4PFJets)[0].eta())<=2.6){
+      	if (abs((*ak4PFJets)[0].eta())<=2.6 && CEMF<0.8 && CHM>0 && CHF>0 && NumConst>1 && NEMF<0.9 && MUF <0.8 && NHF < 0.9 ) 
+		TightJetID =true;
+        	}	 
+	else {
+              TightJetID =false;
+      		}
+
+      if (abs((*ak4PFJets)[0].eta())>2.6) {TightJetID = false;}
+      if ((*ak4PFJets)[0].pt()<30.0) {TightJetID = false;}
+
+      if (TightJetID) {
+        aveleadingpt +=(*ak4PFJets)[0].pt();   
+      } 
+      else {
+        aveleadingpt -=100000;
+      }
+    }
+
   if( aveleadingpt < 0) return;
   nevt++;
   cout << "Ok 4 " << endl;
@@ -542,16 +582,16 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       variab1 = name.c_str();
       if ((jk<0 && strstr(variab1,jethlt_lowest) && strlen(variab1)-strlen(jethlt_lowest)<5) ||
           (jk>=0 && strstr(variab1,jethlt_name[jk]) && strlen(variab1)-strlen(jethlt_name[jk])<5)) {
+      //if ((jk<0 && strstr(variab1,jethlt_lowest)) || (jk>=0 && strstr(variab1,jethlt_name[jk]))) {
            const std::pair<std::vector<std::pair<std::string,int> >,int> prescalesInDetail(hltPrescaleProvider_.prescaleValuesInDetail(iEvent,iSetup,variab1));
-            preL1 = prescalesInDetail.first[0].second;  //acesses the L1 prescale
-            preHLT = prescalesInDetail.second;     // acesses the HLT prescale
+           preL1 = prescalesInDetail.first[0].second;  //acesses the L1 prescale
+           preHLT = prescalesInDetail.second;     // acesses the HLT prescale
            if(preL1<=0){preL1=1;}      //skip the l1 prescale if it give negative or zero
              prescale = preL1 * preHLT;
              compres[jk] = prescale;
-//    cout << " By index " << triggerPrescales->getPrescaleForIndex(ij) << "  L1 : "<< preL1 << "  HLT :" << preHLT << "  L1*HLT "  << compres[jk] <<endl;
-   cout << "Print prescale factor" << endl;
-   cout << "prescale" << "Path " << variab1 <<" " <<   compres[jk] << endl; 
-     }
+             //cout << " By index " << triggerPrescales->getPrescaleForIndex(ij) << "  L1 : "<< preL1 << "  HLT :" << preHLT << "  L1*HLT "  << compres[jk] <<endl;
+             cout << "Prescale" << "Path " << variab1 <<" " <<   compres[jk] << endl; 
+     	     }
     }
   }//calculation of prescale
   
@@ -564,9 +604,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   if (fabs((*ak4PFJets)[0].eta())>2.5)  return ;
   if (!isInEtaRange[0] && (aveleadingpt<30)) return;
   
-  cout << "Second condition" << endl; 
-  
-  
+  cout << "Second condition passed" << endl;  
   
   //const edm::TriggerNames & trigName = iEvent.triggerNames(*trigRes);
   /*
@@ -610,26 +648,30 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 const edm::TriggerNames & trigName = iEvent.triggerNames(*trigRes);
 bool HLTtrg = false;
  if(!trigRes.failedToGet()) {
-       int N_Triggers = trigRes->size();
-       for( int i_Trig = 0; i_Trig < N_Triggers; ++i_Trig ) {
-       if (trigRes.product()->accept(i_Trig)) {
-         TString TrigPath =trigName.triggerName(i_Trig);
-//     cout << "TrigPath  fire name : "<< TrigPath<< endl;
-         for (unsigned ij=0; ij<nJetHLTmx; ij++){
-//     if ((strstr(variab1,dijethlt_name[ij])) && strlen(variab1)-strlen(dijethlt_name[ij])<5) {
-       if ((strstr(TrigPath,jethlt_name[ij])) && strlen(TrigPath)-strlen(jethlt_name[ij])<5) {
-          trgpas[ij] = true ;
-          HLTtrg = true;
-//       cout <<"Dijet Trigger Name : " << TrigPath << "  Trigger Bits : " << trigRes.product()->accept(i_Trig) <<" trgpass[]="<<  trgpas[ij] <<endl;
+ int N_Triggers = trigRes->size();
+ for( int i_Trig = 0; i_Trig < N_Triggers; ++i_Trig ) {
+     if (trigRes.product()->accept(i_Trig)) {
+     TString TrigPath =trigName.triggerName(i_Trig);
+     cout << "TrigPath  fire name : "<< TrigPath<< endl;
+     for (unsigned ij=0; ij<nJetHLTmx; ij++){
+      //if ((strstr(variab1,dijethlt_name[ij])) && strlen(variab1)-strlen(dijethlt_name[ij])<5) {
+        if ((strstr(TrigPath,jethlt_name[ij])) && strlen(TrigPath)-strlen(jethlt_name[ij])<5) {
+        //if (strstr(TrigPath,jethlt_name[ij])) {
+           trgpas[ij] = true ;
+           HLTtrg = true;
+           cout <<"Single Jet Trigger Name :"<< TrigPath <<endl;
+           //cout <<"Dijet Trigger Name : " << TrigPath << "  Trigger Bits : " << trigRes.product()->accept(i_Trig) <<" trgpass[]="<<  trgpas[ij] <<endl;
                }
             } //nDiJjetHLTmx
          }
       }
    } //!trigRes.failedToGet()
 
+cout <<"ok 5"<< endl;
+
 if(!HLTtrg) return;
  
-  
+  cout <<"ok 6"<<endl;
   
   //Third Condition : match the two jets with the trigger objects in eta-phi space
   bool delta_object=false;
@@ -643,15 +685,19 @@ if(!HLTtrg) return;
     // if(obj.pt() < 10.0 && obj.eta() > 2.4) continue;              //look for HLT objects with Pt > 10 GeV only and within eta  2.4 
     obj.unpackFilterLabels(iEvent,*trigRes); 
     obj.unpackPathNames(names);
-    
+    cout << "print 1111" << endl;
     for (unsigned ih = 0; ih < obj.filterLabels().size(); ++ih){
       std::string objfillabel = obj.filterLabels()[ih];
       variab2 = objfillabel.c_str();
+      cout << "print 2222"<< endl;
+      cout << "object variable :"<< variab2<<endl; 
       for (int jk=0; jk<nJetHLTmx; jk++) { 
-	  if (strstr(variab2,jethlt_label[jk]) && strlen(variab2)-strlen(jethlt_label[jk])<5){ 
-        if(trgpas[jk]){
-	  cout << "Trigger object name, ID pt, eta, phi: " << variab2 <<","<< obj.filterIds()[ih]<<", " << obj.pt()<<", "<<obj.eta()<<", "<<obj.phi() << endl;
-	  
+	  if (strstr(variab2,jethlt_label[jk]) && strlen(variab2)-strlen(jethlt_label[jk])<3){ 
+          cout << "trigger before pass :"<< variab2<<endl;
+	  cout << "print 3333"<< endl;
+          if(trgpas[jk]){
+	    cout << "Trigger object name, ID pt, eta, phi: " << variab2 <<","<< obj.filterIds()[ih]<<", " << obj.pt()<<", "<<obj.eta()<<", "<<obj.phi() << endl;
+	    //cout << "Trigger object print" << endl;
 	  //-------------------------------------------------------- 
 	  double dr1 = dR((*ak4PFJets)[0].eta(), (*ak4PFJets)[0].phi(), obj.eta(), obj.phi());
 	  //double dr2 = dR((*ak4PFJets)[1].eta(), (*ak4PFJets)[1].phi(), obj.eta(), obj.phi());
@@ -661,7 +707,7 @@ if(!HLTtrg) return;
           //            obj2 = true; }
 //	  cout <<"Reco1 PT :"<< (*ak4PFJets)[0].pt()<<" Reco2 PT :"<< (*ak4PFJets)[1].pt()<<" ; Object PT " << obj.pt() << " ; " << (*ak4PFJets)[0].eta() <<" ; " << obj.eta()<< " ; "               
 //	       << (*ak4PFJets)[0].phi()<< " ; " << obj.phi() << endl;
-//	  cout << "dR = " << dr1 << "  :  " << dr2<< endl;
+	  //cout << "dR = " << dr1 << endl;
 	  //if( dr1<.3 || dr2 <.3 ) {delta_object = true; }
 	  if( dr1<.3 ) {delta_object = true; }
 	} //trgpass    
@@ -686,15 +732,16 @@ if(!HLTtrg) return;
   
  // cout <<"Reco JetHT : " << aveleadingpt << "  HLT jetAve : " << objectPt_ave << " Trig fired : " << ntrig << " Jets No :" << ak4PFJets->size() <<endl; 
   ntrig++;
-  cout << "Ok 5 " << endl;  
+  cout << "Ok 7 " << endl;  
   
   //Fill event selected event
   for (int iet=0; iet<njetetamn; iet++) {
     for (int jk=0; jk<nJetHLTmx; jk++) {
-      //     if(aveleadingpt>dijethlt_thr[jk]) {
+      //if(aveleadingpt>dijethlt_thr[jk]) {
       hlt_dijettrg_all_evt[jk][iet]->Fill(aveleadingpt, compres[jk]);
- //  cout << "Filled PS : " << compres[jk] << endl;
-        //    }
+      //cout << "Filled PS : " << compres[jk] << endl;
+      //    }
+      cout << "ok 8"<< endl;
     }
   } //Fill the all reco jet 
   
@@ -703,7 +750,8 @@ if(!HLTtrg) return;
     for (int jk=0; jk<nJetHLTmx; jk++) {
       //if(objectPt_ave>=dijethlt_thr[jk]) {
       if(objectPt_ave>=jethlt_thr[jk]) {
-	hlt_dijettrg_fired[jk][iet]->Fill(aveleadingpt, compres[jk]);
+      hlt_dijettrg_fired[jk][iet]->Fill(aveleadingpt, compres[jk]);
+      cout <<"ok 9"<<endl;
       }
     }
   } //Fill the HLT trigger fired*/
@@ -762,8 +810,8 @@ if(!HLTtrg) return;
   } //!trigRes.failedToGet()
   */
   
-  
-  
+ cout << "DONE"<< endl; 
+ 
 } // end of event
 
 
@@ -778,7 +826,7 @@ void
 Triggereffi::endJob()
 {
   cout << "Total Event =" << nevt << endl;
-  cout << "Total  triggerd event  =" << ntrig << endl;
+  cout << "Total triggerd event  =" << ntrig << endl;
   // cout << "Single Mu trigger  : "<<nSingleMutig<< endl; 
 }
 
@@ -807,7 +855,7 @@ Triggereffi::beginRun(edm::Run const& iRun, edm::EventSetup const& iSetup)
 double dR(double eta1, double phi1, double eta2, double phi2) {
   double DR=0.0;
   DR=sqrt(pow((eta1- eta2),2) +pow(PhiInRange(phi1 - phi2),2));
-  //  cout << "DRRRRR " << eta1 << phi1 << eta2 << phi2 <<endl;
+  //cout << "DRRRRR " << eta1 << phi1 << eta2 << phi2 <<endl;
   return DR;
 }
 

@@ -596,8 +596,8 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   }//calculation of prescale
   
   //Second condition:  select events with two reconstructed jets above a certain (low) threshold
-  //if ((!ak4PFJets.isValid()) ||  ak4PFJets->size() <2) return;
-  if (!ak4PFJets.isValid()) return;
+  if ((!ak4PFJets.isValid()) ||  ak4PFJets->size() <1) return;
+  //if (!ak4PFJets.isValid()) return;
   //if ((*ak4PFJets)[0].pt()<30.0 || (*ak4PFJets)[1].pt()<30.0)  return ;
   if ((*ak4PFJets)[0].pt()<30.0)  return ;
   //if (fabs((*ak4PFJets)[1].eta())>2.4 || fabs((*ak4PFJets)[1].eta())>2.4)  return ;
@@ -674,7 +674,7 @@ if(!HLTtrg) return;
   cout <<"ok 6"<<endl;
   
   //Third Condition : match the two jets with the trigger objects in eta-phi space
-  bool delta_object=false;
+  //bool delta_object=false;
   double object_pt[1];
   object_pt[0]=-1;
   //object_pt[1]=-1;
@@ -709,26 +709,26 @@ if(!HLTtrg) return;
 //	       << (*ak4PFJets)[0].phi()<< " ; " << obj.phi() << endl;
 	  //cout << "dR = " << dr1 << endl;
 	  //if( dr1<.3 || dr2 <.3 ) {delta_object = true; }
-	  if( dr1<.3 ) {delta_object = true; }
+	  //if( dr1<.3 ) {delta_object = true; }
 	} //trgpass    
        }//label matched
       }//jk<nDiJetHLTmx
     }//ih < obj.filterLabels().size();
   }//Trigger object standalone
   
-  if(!delta_object) return;  
+  //if(!delta_object) return;  
   //if(!obj1 || !obj2) return;
   if(!obj1) return;
   //if(object_pt[0]< 0 || object_pt[0] < 0) return;
-  if(object_pt[0] < 0) return;
+  if(object_pt[0] < 30) return;
 
-  // cout <<"Delta Condtion: " << delta_object <<  obj1 << obj2 << endl;
+  //cout <<"Delta Condtion: " << delta_object <<  obj1 << endl;
   
   
   //double objectPt_ave = (object_pt[0]+object_pt[1])/2;
-  double objectPt_ave = (object_pt[0]);
+  //double objectPt_ave = (object_pt[0]);
   //mimic the DijetPFJet trigger decision (average of the two trigger objects pT above a certain threshold) 
-  if(objectPt_ave < 30 ) return;
+  //if(objectPt_ave < 30 ) return;
   
  // cout <<"Reco JetHT : " << aveleadingpt << "  HLT jetAve : " << objectPt_ave << " Trig fired : " << ntrig << " Jets No :" << ak4PFJets->size() <<endl; 
   ntrig++;
@@ -749,7 +749,8 @@ if(!HLTtrg) return;
   for (int iet=0; iet<njetetamn; iet++) {
     for (int jk=0; jk<nJetHLTmx; jk++) {
       //if(objectPt_ave>=dijethlt_thr[jk]) {
-      if(objectPt_ave>=jethlt_thr[jk]) {
+      //if(objectPt_ave>=jethlt_thr[jk]) {
+      if (object_pt[0]>=jethlt_thr[jk]) {
       hlt_dijettrg_fired[jk][iet]->Fill(aveleadingpt, compres[jk]);
       cout <<"ok 9"<<endl;
       }

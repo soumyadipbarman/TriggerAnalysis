@@ -414,7 +414,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   //   cout <<endl;
   
   if (nevt%500==1) cout <<"TriggerEfficiency::analyze run number = "<<nevt<<endl;
-  cout << " Ok1 " << endl;  
+  //cout << " Ok1 " << endl;  
   const char* variab1;
   const char* variab2;
   //double aveleadingpt =0;
@@ -451,8 +451,9 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   
   if (!trigRes.isValid()) return;
   bool mutrig=false;
-  bool dijtrig=false;
-  cout << " Ok 2 " << endl; 
+  //bool dijtrig=false;
+  bool singlejtrig=false;
+  //cout << " Ok 2 " << endl; 
   edm::TriggerNames triggerNames = iEvent.triggerNames(*trigRes);   //Get The trigger name for TriggerResult Input
   
   if (trigRes.isValid()) {
@@ -482,7 +483,8 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 	if ((strstr(variab1,jethlt_name[kl])) && strlen(variab1)-strlen(jethlt_name[kl])<5) {    
 	  hltdijet_list[ij] = kl; 
 	  //cout <<"First check :"<< variab1 <<  endl; 
-	  dijtrig=true; 
+	  //dijtrig=true;
+          singlejtrig=true; 
 	  break;
 	}
       }
@@ -492,11 +494,12 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   }//Triger result valid
   
   if (!mutrig) return;
-  if (!dijtrig) return;
+  //if (!dijtrig) return;
+  if (!singlejtrig) return;
   
   //**************************************************
   
-  cout << "Ok 3 " << endl; 
+  //cout << "Ok 3 " << endl; 
   
   //**************************************************
   //Calculate average Pt 
@@ -538,7 +541,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     aveleadingpt /=1.0;
     
   }
-*/ // calculation of average pt
+*/ // Jet ID correction
   //***********************************************************
 
   if (ak4PFJets.isValid() &&  ak4PFJets->size()>1) {     // check if we need greter than 0 or 1 jet
@@ -579,7 +582,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 
   if( leadingpt < 0) return;
   nevt++;
-  cout << "Ok 4 " << endl;
+  //cout << "Ok 4 " << endl;
   
 
   //Preslace Factor Calculation
@@ -600,7 +603,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
              prescale = preL1 * preHLT;
              compres[jk] = prescale;
              //cout << " By index " << triggerPrescales->getPrescaleForIndex(ij) << "  L1 : "<< preL1 << "  HLT :" << preHLT << "  L1*HLT "  << compres[jk] <<endl;
-             cout << "Prescale" << "Path " << variab1 <<" " <<   compres[jk] << endl; 
+             //cout << "Prescale" << "Path " << variab1 <<" " <<   compres[jk] << endl; 
      	     }
     }
   }//calculation of prescale
@@ -614,7 +617,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   if (fabs((*ak4PFJets)[0].eta())>2.5)  return ;
   if (!isInEtaRange[0] && (leadingpt<30)) return;
   
-  cout << "Second condition passed" << endl;  
+  //cout << "Second condition passed" << endl;  
   
   //const edm::TriggerNames & trigName = iEvent.triggerNames(*trigRes);
   /*
@@ -669,7 +672,7 @@ bool HLTtrg = false;
         //if (strstr(TrigPath,jethlt_name[ij])) {
            trgpas[ij] = true ;
            HLTtrg = true;
-           cout <<"Single Jet Trigger Name :"<< TrigPath <<endl;
+           //cout <<"Single Jet Trigger Name :"<< TrigPath <<endl;
            //cout <<"Dijet Trigger Name : " << TrigPath << "  Trigger Bits : " << trigRes.product()->accept(i_Trig) <<" trgpass[]="<<  trgpas[ij] <<endl;
                }
             } //nDiJjetHLTmx
@@ -677,14 +680,14 @@ bool HLTtrg = false;
       }
    } //!trigRes.failedToGet()
 
-cout <<"ok 5"<< endl;
+//cout <<"ok 5"<< endl;
 
 if(!HLTtrg) return;
  
-  cout <<"ok 6"<<endl;
+  //cout <<"ok 6"<<endl;
   
   //Third Condition : match the two jets with the trigger objects in eta-phi space
-  bool delta_object=false;
+  //bool delta_object=false;
   double object_pt[1];
   object_pt[0]=-1;
   //object_pt[1]=-1;
@@ -695,18 +698,18 @@ if(!HLTtrg) return;
     // if(obj.pt() < 10.0 && obj.eta() > 2.4) continue;              //look for HLT objects with Pt > 10 GeV only and within eta  2.4 
     obj.unpackFilterLabels(iEvent,*trigRes); 
     obj.unpackPathNames(names);
-    cout << "print 1111" << endl;
+    //cout << "print 1111" << endl;
     for (unsigned ih = 0; ih < obj.filterLabels().size(); ++ih){
       std::string objfillabel = obj.filterLabels()[ih];
       variab2 = objfillabel.c_str();
-      cout << "print 2222"<< endl;
-      cout << "object variable :"<< variab2<<endl; 
+      //cout << "print 2222"<< endl;
+      //cout << "object variable :"<< variab2<<endl; 
       for (int jk=0; jk<nJetHLTmx; jk++) { 
 	  if (strstr(variab2,jethlt_label[jk]) && strlen(variab2)-strlen(jethlt_label[jk])<3){ 
-          cout << "trigger before pass :"<< variab2<<endl;
-	  cout << "print 3333"<< endl;
+          //cout << "trigger before pass :"<< variab2<<endl;
+	  //cout << "print 3333"<< endl;
           if(trgpas[jk]){
-	    cout << "Trigger object name, ID pt, eta, phi: " << variab2 <<","<< obj.filterIds()[ih]<<", " << obj.pt()<<", "<<obj.eta()<<", "<<obj.phi() << endl;
+	    //cout << "Trigger object name, ID pt, eta, phi: " << variab2 <<","<< obj.filterIds()[ih]<<", " << obj.pt()<<", "<<obj.eta()<<", "<<obj.phi() << endl;
 	    //cout << "Trigger object print" << endl;
 	  //-------------------------------------------------------- 
 	  double dr1 = dR((*ak4PFJets)[0].eta(), (*ak4PFJets)[0].phi(), obj.eta(), obj.phi());
@@ -719,14 +722,14 @@ if(!HLTtrg) return;
 //	       << (*ak4PFJets)[0].phi()<< " ; " << obj.phi() << endl;
 	  //cout << "dR = " << dr1 << endl;
 	  //if( dr1<.3 || dr2 <.3 ) {delta_object = true; }
-	  if( dr1<.3 ) {delta_object = true; }
+	  //if( dr1<.3 ) {delta_object = true; }
 	} //trgpass    
        }//label matched
       }//jk<nDiJetHLTmx
     }//ih < obj.filterLabels().size();
   }//Trigger object standalone
   
-  if(!delta_object) return;  
+  //if(!delta_object) return;  
   //if(!obj1 || !obj2) return;
   if(!obj1) return;
   //if(object_pt[0]< 0 || object_pt[0] < 0) return;
@@ -736,13 +739,13 @@ if(!HLTtrg) return;
   
   
   //double objectPt_ave = (object_pt[0]+object_pt[1])/2;
-  double objectPt_ave = (object_pt[0]);
+  //double objectPt_ave = (object_pt[0]);
   //mimic the DijetPFJet trigger decision (average of the two trigger objects pT above a certain threshold) 
-  if(objectPt_ave < 30 ) return;
+  //if(objectPt_ave < 30 ) return;
   
  // cout <<"Reco JetHT : " << aveleadingpt << "  HLT jetAve : " << objectPt_ave << " Trig fired : " << ntrig << " Jets No :" << ak4PFJets->size() <<endl; 
   ntrig++;
-  cout << "Ok 7 " << endl;  
+  //cout << "Ok 7 " << endl;  
   
   //Fill event selected event
   for (int iet=0; iet<njetetamn; iet++) {
@@ -751,7 +754,7 @@ if(!HLTtrg) return;
       hlt_singlejettrg_all_evt[jk][iet]->Fill(leadingpt, compres[jk]);
       //cout << "Filled PS : " << compres[jk] << endl;
       //    }
-      cout << "ok 8"<< endl;
+      //cout << "ok 8"<< endl;
     }
   } //Fill the all reco jet 
   
@@ -762,7 +765,7 @@ if(!HLTtrg) return;
       //if(objectPt_ave>=jethlt_thr[jk]) {
       if (object_pt[0]>=jethlt_thr[jk]) {
       hlt_singlejettrg_fired[jk][iet]->Fill(leadingpt, compres[jk]);
-      cout <<"ok 9"<<endl;
+      //cout <<"ok 9"<<endl;
       }
     }
   } //Fill the HLT trigger fired*/
@@ -821,7 +824,7 @@ if(!HLTtrg) return;
   } //!trigRes.failedToGet()
   */
   
- cout << "DONE"<< endl; 
+ //cout << "DONE"<< endl; 
  
 } // end of event
 

@@ -463,7 +463,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     }         
     for(unsigned ij = 0; ij != size; ij++) {
       std::string name = triggerNames.triggerName(ij);
-      if(nevt==1)  {cout <<"inclu:hltobject "<<" "<<ij<<" "<<name<<endl;}
+      //if(nevt==1)  {cout <<"inclu:hltobject "<<" "<<ij<<" "<<name<<endl;}
       	//if(trigRes->accept(ij)){cout << "trigger accepted  for : " << name << endl;}  
       	variab1 = name.c_str();
       	//if(trigRes->accept(ij)){cout << "trigger accepted  for (cross checked) : " << variab1 << endl;} 
@@ -543,8 +543,9 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   }
 */ // Jet ID correction
   //***********************************************************
+  // Event selection with ak4pfchs jets with atleast 2 jets in the event
 
-  if (ak4PFJets.isValid() &&  ak4PFJets->size()>1) {     // check if we need greter than 0 or 1 jet
+  if (ak4PFJets.isValid() && ak4PFJets->size()>1) {     // check if we need greter than 0 or 1 jet
     for (int iet=0; iet<njetetamn; iet++) {
       isInEtaRange[iet] = true;
     }
@@ -561,12 +562,12 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       //int NumNeutralParticles =(*ak4PFJets)[ij].neutralMultiplicity();
       int CHM = (*ak4PFJets)[0].chargedMultiplicity();
       bool TightJetID =false;
-      if(abs((*ak4PFJets)[0].eta())<=2.6){
-      	if (abs((*ak4PFJets)[0].eta())<=2.6 && CEMF<0.8 && CHM>0 && CHF>0 && NumConst>1 && NEMF<0.9 && MUF <0.8 && NHF < 0.9 ) 
+      //if(abs((*ak4PFJets)[0].eta())<=2.6){
+      if (abs((*ak4PFJets)[0].eta())<=2.6 && CEMF<0.8 && CHM>0 && CHF>0 && NumConst>1 && NEMF<0.9 && MUF <0.8 && NHF < 0.9 ) {
 		TightJetID =true;
         	}	 
-	else {
-              TightJetID =false;
+      else {
+            TightJetID =false;
       		}
 
       if (abs((*ak4PFJets)[0].eta())>2.6) {TightJetID = false;}
@@ -609,7 +610,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   }//calculation of prescale
   
   //Second condition:  select events with two reconstructed jets above a certain (low) threshold
-  if ((!ak4PFJets.isValid()) ||  ak4PFJets->size() <1) return;
+  if ((!ak4PFJets.isValid()) ||  ak4PFJets->size() <2) return;
   //if (!ak4PFJets.isValid()) return;
   //if ((*ak4PFJets)[0].pt()<30.0 || (*ak4PFJets)[1].pt()<30.0)  return ;
   if ((*ak4PFJets)[0].pt()<30.0)  return ;

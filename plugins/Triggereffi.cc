@@ -140,28 +140,17 @@ static const  int nMuHLTmx=11;      // muon trigger number
 static const int nJetHLTmx=11;      //single PFJet Trigger no.
 const int njetetamn=1;              // one eta space is choosen 
 
-const char* jethlt_name[nJetHLTmx]={"HLT_PFJet40_v",
-                                    "HLT_PFJet60_v",
-                                    "HLT_PFJet80_v",
-                                    "HLT_PFJet140_v",
-                                    "HLT_PFJet200_v",
-                                    "HLT_PFJet260_v",
-                                    "HLT_PFJet320_v",
-                                    "HLT_PFJet400_v",
-                                    "HLT_PFJet450_v",
-                                    "HLT_PFJet500_v",
-				    "HLT_PFJet550_v"};
+// Single Jet HLT_PFJet Trigger
+const char* jethlt_name[nJetHLTmx]={"HLT_PFJet40_v","HLT_PFJet60_v","HLT_PFJet80_v","HLT_PFJet140_v","HLT_PFJet200_v","HLT_PFJet260_v","HLT_PFJet320_v","HLT_PFJet400_v","HLT_PFJet450_v","HLT_PFJet500_v","HLT_PFJet550_v"};
 
-//const char* dijethlt_name[nDiJetHLTmx]={"HLT_DiPFJetAve60_v","HLT_DiPFJetAve80_v", "HLT_DiPFJetAve140_v", "HLT_DiPFJetAve200_v", "HLT_DiPFJetAve260_v", "HLT_DiPFJetAve320_v", "HLT_DiPFJetAve400_v", "HLT_DiPFJetAve500_v"};                           // Di-Jet Trigger Name
+const char* jethlt_label[nJetHLTmx]={"hltSinglePFJet40","hltSinglePFJet60","hltSinglePFJet80", "hltSinglePFJet140", "hltSinglePFJet200", "hltSinglePFJet260", "hltSinglePFJet320", "hltSinglePFJet400","hltSinglePFJet450", "hltSinglePFJet500", "hltSinglePFJet550"};   
 
-//const char* dijethlt_name[nDiJetHLTmx]={"HLT_DiPFJetAve40_v","HLT_DiPFJetAve60_v","HLT_DiPFJetAve80_v", "HLT_DiPFJetAve140_v", "HLT_DiPFJetAve200_v", "HLT_DiPFJetAve260_v", "HLT_DiPFJetAve320_v", "HLT_DiPFJetAve400_v", "HLT_DiPFJetAve500_v"};                           // Di-Jet Trigger Name
+// DiJet Trigger
+//const char* dijethlt_name[nDiJetHLTmx]={"HLT_DiPFJetAve40_v","HLT_DiPFJetAve60_v","HLT_DiPFJetAve80_v", "HLT_DiPFJetAve140_v", "HLT_DiPFJetAve200_v", "HLT_DiPFJetAve260_v", "HLT_DiPFJetAve320_v", "HLT_DiPFJetAve400_v", "HLT_DiPFJetAve500_v"};                          
 
-//const char* dijethlt_label[nDiJetHLTmx]={"hltDiPFJetAve40","hltDiPFJetAve60","hltDiPFJetAve80", "hltDiPFJetAve140", "hltDiPFJetAve200", "hltDiPFJetAve260", "hltDiPFJetAve320", "hltDiPFJetAve400", "hltDiPFJetAve500"};                           // Di-Jet Trigger Name
+//const char* dijethlt_label[nDiJetHLTmx]={"hltDiPFJetAve40","hltDiPFJetAve60","hltDiPFJetAve80", "hltDiPFJetAve140", "hltDiPFJetAve200", "hltDiPFJetAve260", "hltDiPFJetAve320", "hltDiPFJetAve400", "hltDiPFJetAve500"};                           
 
-//const char* jethlt_label[nJetHLTmx]={"hltPFJetAve40","hltPFJetAve60","hltPFJetAve80", "hltPFJetAve140", "hltPFJetAve200", "hltPFJetAve260", "hltPFJetAve320", "hltPFJetAve400","hltPFJetAve450", "hltPFJetAve500", "hltPFJetAve550"};              // Single Jet Trigger name
-
-const char* jethlt_label[nJetHLTmx]={"hltSinglePFJet40","hltSinglePFJet60","hltSinglePFJet80", "hltSinglePFJet140", "hltSinglePFJet200", "hltSinglePFJet260", "hltSinglePFJet320", "hltSinglePFJet400","hltSinglePFJet450", "hltSinglePFJet500", "hltSinglePFJet550"};   // Single Jet Trigger Name
-
+// Muon Trigger
 const char* muhlt_name[nMuHLTmx]={"HLT_IsoMu17_eta2p1_", //63
                                   "HLT_IsoMu20_", //72
                                   "HLT_IsoMu30_", // 71
@@ -172,19 +161,19 @@ const char* muhlt_name[nMuHLTmx]={"HLT_IsoMu17_eta2p1_", //63
                                   "HLT_IsoTkMu24_eta2p1_", //81
                                   "HLT_IsoTkMu27_", //82
                                   "HLT_IsoMu18_",   //449
-                                  "HLT_IsoMu22_"};   //453     // Muon trigger name
+                                  "HLT_IsoMu22_"};   //453    
 
-//double l1Pt[nDiJetHLTmx] = {0,35,60,90,120,170,170,170};    // not used
+//double l1Pt[nDiJetHLTmx] = {0,35,60,90,120,170,170,170};    
 //double dijethlt_thr[nDiJetHLTmx]={60,80,140,200,260,320,400,500};
 //double dijethlt_thr[nDiJetHLTmx]={40,60,80,140,200,260,320,400,500};
-double jethlt_thr[nJetHLTmx]={40,60,80,140,200,260,320,400,450,500,550};   // OK
-//double leadingPtThreshold[nDiJetHLTmx]={40,60,80,140,200,260,320,400,500}; // comment out
+//double leadingPtThreshold[nDiJetHLTmx]={40,60,80,140,200,260,320,400,500}; 
 //double leadingPtThreshold[nDiJetHLTmx]={60,80,140,200,260,320,400,500};
-double leadingPtThreshold[nJetHLTmx]={40,60,80,140,200,260,320,400,450,500,550};   // new
 //const char* jethlt_lowest={"HLT_DiPFJetAve40_v"};
-const char* jethlt_lowest={"HLT_PFJet40_v"};      // OK
-double etarange[njetetamn] ={2.5};                // OK
-bool trgpas[nJetHLTmx];//={0,0,0,0,0,0,0,0};      // OK
+double jethlt_thr[nJetHLTmx]={40,60,80,140,200,260,320,400,450,500,550};   
+double leadingPtThreshold[nJetHLTmx]={40,60,80,140,200,260,320,400,450,500,550};  
+const char* jethlt_lowest={"HLT_PFJet40_v"};     
+double etarange[njetetamn] ={2.5};                
+bool trgpas[nJetHLTmx];//={0,0,0,0,0,0,0,0};     
 
 
 int l1pres[nJetHLTmx], hltpres[nJetHLTmx], compres[nJetHLTmx];    // For jet
@@ -238,12 +227,12 @@ private:
   virtual void beginJob() override;
   virtual void analyze(const edm::Event&, const edm::EventSetup&) override;
   virtual void endJob() override;
-//ggerPrescales_ 
- virtual void beginRun(const edm::Run&, const edm::EventSetup&) override;
+  //ggerPrescales_ 
+  virtual void beginRun(const edm::Run&, const edm::EventSetup&) override;
  
-//Dijet trigger efficiency
-//TH1F* hlt_dijettag[nDiJetHLTmx][njetetamn];
-//TH1F* hlt_dijetprob[nDiJetHLTmx][njetetamn];
+  //Dijet trigger efficiency
+  //TH1F* hlt_dijettag[nDiJetHLTmx][njetetamn];
+  //TH1F* hlt_dijetprob[nDiJetHLTmx][njetetamn];
   
   //TH1F* hlt_dijettrg_fired[nJetHLTmx][njetetamn];
   //TH1F* hlt_dijettrg_all_evt[nJetHLTmx][njetetamn];
@@ -346,12 +335,12 @@ Triggereffi::Triggereffi(const edm::ParameterSet& iConfig):
     for (int unsigned jk=0; jk<njetetamn; jk++) {
       
       //sprintf(name, "hlt_dijet_effi_%i_%i", ij, jk);
-      sprintf(name, "hlt_singlejet_effi_%i_%i", ij, jk);
       //sprintf(title, "dijet trigger fired: (%s) |i#eta|<%g", dijethlt_name[ij], etarange[jk]);
       //sprintf(title, "dijet trigger fired: (%s) |i#eta|<%g", jethlt_name[ij], etarange[jk]);
-      sprintf(title, "singlejet trigger fired: (%s) |i#eta|<%g", jethlt_name[ij], etarange[jk]);
       //hlt_dijettrg_fired[ij][jk] = fs->make<TH1F>(name, title, 100, 0.4*leadingPtThreshold[ij], 2.5*leadingPtThreshold[ij]);
       //hlt_dijettrg_fired[ij][jk]->Sumw2();
+      sprintf(name, "hlt_singlejet_effi_%i_%i", ij, jk);
+      sprintf(title, "singlejet trigger fired: (%s) |i#eta|<%g", jethlt_name[ij], etarange[jk]);
       hlt_singlejettrg_fired[ij][jk] = fs->make<TH1F>(name, title, 100, 0.4*leadingPtThreshold[ij], 2.5*leadingPtThreshold[ij]);
       hlt_singlejettrg_fired[ij][jk]->Sumw2();
     }
@@ -361,12 +350,12 @@ Triggereffi::Triggereffi(const edm::ParameterSet& iConfig):
     for (int unsigned jk=0; jk<njetetamn; jk++) {
       
       //sprintf(name, "hlt_dijet_all_evt_%i_%i", ij, jk);
-      sprintf(name, "hlt_singlejet_all_evt_%i_%i", ij, jk);
       //sprintf(title, "dijet trigger All event: (%s) |i#eta|<%g", dijethlt_name[ij], etarange[jk]);
       //sprintf(title, "dijet trigger All event: (%s) |i#eta|<%g", jethlt_name[ij], etarange[jk]);
-      sprintf(title, "singlejet trigger All event: (%s) |i#eta|<%g", jethlt_name[ij], etarange[jk]);
       //hlt_dijettrg_all_evt[ij][jk] = fs->make<TH1F>(name, title, 100, 0.4*leadingPtThreshold[ij], 2.5*leadingPtThreshold[ij]);
       //hlt_dijettrg_all_evt[ij][jk]->Sumw2();
+      sprintf(name, "hlt_singlejet_all_evt_%i_%i", ij, jk);
+      sprintf(title, "singlejet trigger All event: (%s) |i#eta|<%g", jethlt_name[ij], etarange[jk]);
       hlt_singlejettrg_all_evt[ij][jk] = fs->make<TH1F>(name, title, 100, 0.4*leadingPtThreshold[ij], 2.5*leadingPtThreshold[ij]);
       hlt_singlejettrg_all_evt[ij][jk]->Sumw2();
     }
@@ -445,10 +434,6 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   //if(musz <= 0) return;
   // cout << "Event with muon Numbers : " <<musz<< endl;
   
-  
-  
-  
-  
   if (!trigRes.isValid()) return;
   bool mutrig=false;
   //bool dijtrig=false;
@@ -463,7 +448,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     }         
     for(unsigned ij = 0; ij != size; ij++) {
       std::string name = triggerNames.triggerName(ij);
-      //if(nevt==1)  {cout <<"inclu:hltobject "<<" "<<ij<<" "<<name<<endl;}
+        //if(nevt==1)  {cout <<"inclu:hltobject "<<" "<<ij<<" "<<name<<endl;}
       	//if(trigRes->accept(ij)){cout << "trigger accepted  for : " << name << endl;}  
       	variab1 = name.c_str();
       	//if(trigRes->accept(ij)){cout << "trigger accepted  for (cross checked) : " << variab1 << endl;} 
@@ -552,7 +537,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   for (int iet=0; iet<njetetamn; iet++) {
         if (abs((*ak4PFJets)[0].eta())>etarange[iet]) { isInEtaRange[iet] = false;}
       }
-      //Jet ID ================= Tight ID Recomendation added as https://twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVUL
+      //Jet ID ================= Tight ID Recomendation added as https://twiki.cern.ch/twiki/bin/view/CMS/JetID13TeVUL for 2017 & 2018
       double NHF = (*ak4PFJets)[0].neutralHadronEnergyFraction();
       double NEMF = (*ak4PFJets)[0].neutralEmEnergyFraction();
       double CHF = (*ak4PFJets)[0].chargedHadronEnergyFraction();

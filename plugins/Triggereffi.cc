@@ -195,6 +195,8 @@ std::map<std::string, bool> fired;
 int nevt;
 int ntrig;
 //int nSingleMutig =0;
+//int nmuonpf =0;
+
 
 // DeltaR function
 // //template <class T, class U> static double deltaR(const T& t, const U& u);
@@ -644,6 +646,9 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   }
   } //Fill the all valid event 
   */
+
+//
+
 const edm::TriggerNames & trigName = iEvent.triggerNames(*trigRes);
 bool HLTtrg = false;
  if(!trigRes.failedToGet()) {
@@ -669,7 +674,37 @@ bool HLTtrg = false;
 //cout <<"ok 5"<< endl;
 
 if(!HLTtrg) return;
- 
+
+// cross check for muon and single jet trigger simultaneously
+/*
+const edm::TriggerNames & trigName = iEvent.triggerNames(*trigRes);
+bool HLTtrg = false;
+ if(!trigRes.failedToGet()) {
+ int N_Triggers = trigRes->size();
+ for( int i_Trig = 0; i_Trig < N_Triggers; ++i_Trig ) {
+     if (trigRes.product()->accept(i_Trig)) {
+     TString TrigPath =trigName.triggerName(i_Trig);
+     for (unsigned ij=0; ij<nMuHLTmx; ij++){ 
+      for (unsigned ij=0; ij<nJetHLTmx; ij++){
+       if (((strstr(TrigPath,muhlt_name[ij])) && strlen(TrigPath)-strlen(muhlt_name[ij])<5) && ((strstr(TrigPath,jethlt_name[ij])) && strlen(TrigPath)-strlen(jethlt_name[ij])<5)){
+       //cout <<" Muon trigger : "<<TrigPath<<endl;
+     //for (unsigned ij=0; ij<nJetHLTmx; ij++){
+     //if ((strstr(TrigPath,jethlt_name[ij])) && strlen(TrigPath)-strlen(jethlt_name[ij])<5) {
+     cout << "Final trigger : "<< TrigPath << endl;
+     trgpas[ij] = true ;
+     HLTtrg = true;
+     nmuonpf++;
+     }
+     }
+}
+}
+}
+}
+//}
+if(!HLTtrg) return;
+*/
+
+
   //cout <<"ok 6"<<endl;
   
   //Third Condition : match the two jets with the trigger objects in eta-phi space
@@ -822,9 +857,10 @@ Triggereffi::beginJob()
 void
 Triggereffi::endJob()
 {
-  cout << "Total Event =" << nevt << endl;
-  cout << "Total triggerd event  =" << ntrig << endl;
-  // cout << "Single Mu trigger  : "<<nSingleMutig<< endl; 
+  cout << "Total Event = " << nevt << endl;
+  cout << "Total triggerd event = " << ntrig << endl;
+  //cout << "Single Mu trigger  = "<<nSingleMutig<< endl;
+  //cout << "Number of simultaneous trigger = "<< nmuonpf <<endl; 
 }
 
 void

@@ -555,8 +555,9 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
             TightJetID =false;
       		}
 
-      if (abs((*ak4PFJets)[0].eta())>2.6) {TightJetID = false;}
+      if (abs((*ak4PFJets)[0].eta())>2.6) {TightJetID = false;}    //2.5 or 2.6 ??
       if ((*ak4PFJets)[0].pt()<30.0) {TightJetID = false;}
+      //if (((*ak4PFJets)[0].pt()<30.0) && (abs((*ak4PFJets)[0].eta())>2.5)) {TightJetID = false;}
 
       if (TightJetID) {
         leadingpt +=(*ak4PFJets)[0].pt();   
@@ -570,7 +571,6 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   nevt++;
   //cout << "Ok 4 " << endl;
   
-
   //Preslace Factor Calculation
   int preL1(-1), preHLT(-1), prescale(-1);
 
@@ -684,19 +684,16 @@ if(!HLTtrg) return;
     // if(obj.pt() < 10.0 && obj.eta() > 2.4) continue;              //look for HLT objects with Pt > 10 GeV only and within eta  2.4 
     obj.unpackFilterLabels(iEvent,*trigRes); 
     obj.unpackPathNames(names);
-    //cout << "print 1111" << endl;
     for (unsigned ih = 0; ih < obj.filterLabels().size(); ++ih){
       std::string objfillabel = obj.filterLabels()[ih];
       variab2 = objfillabel.c_str();
-      //cout << "print 2222"<< endl;
       //cout << "object variable :"<< variab2<<endl; 
       for (int jk=0; jk<nJetHLTmx; jk++) { 
 	  if (strstr(variab2,jethlt_label[jk]) && strlen(variab2)-strlen(jethlt_label[jk])<3){ 
           //cout << "trigger before pass :"<< variab2<<endl;
-	  //cout << "print 3333"<< endl;
           if(trgpas[jk]){
-	    //cout << "Trigger object name, ID pt, eta, phi: " << variab2 <<","<< obj.filterIds()[ih]<<", " << obj.pt()<<", "<<obj.eta()<<", "<<obj.phi() << endl;
-	    //cout << "Trigger object print" << endl;
+	  //cout << "Trigger object name, ID pt, eta, phi: " << variab2 <<","<< obj.filterIds()[ih]<<", " << obj.pt()<<", "<<obj.eta()<<", "<<obj.phi() << endl;
+	  //cout << "Trigger object print" << endl;
 	  //-------------------------------------------------------- 
 	  double dr1 = dR((*ak4PFJets)[0].eta(), (*ak4PFJets)[0].phi(), obj.eta(), obj.phi());
 	  //double dr2 = dR((*ak4PFJets)[1].eta(), (*ak4PFJets)[1].phi(), obj.eta(), obj.phi());
@@ -718,7 +715,7 @@ if(!HLTtrg) return;
   //if(!delta_object) return;  
   //if(!obj1 || !obj2) return;
   if(!obj1) return;
-  //if(object_pt[0]< 0 || object_pt[0] < 0) return;
+  //if(object_pt[0]< 0 || object_pt[1] < 0) return;
   if(object_pt[0] < 30) return;
 
   //cout <<"Delta Condtion: " << delta_object <<  obj1 << endl;
@@ -848,8 +845,6 @@ Triggereffi::beginRun(edm::Run const& iRun, edm::EventSetup const& iSetup)
        } else {
          }
 }
-
-
 
 //Delta R function
 double dR(double eta1, double phi1, double eta2, double phi2) {

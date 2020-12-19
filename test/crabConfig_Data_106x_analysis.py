@@ -14,7 +14,7 @@ config.section_("General")
 
 config.General.requestName = 'Jet_Charge_JetHT_Run2017B-09Aug2019_UL2017-v1_21Dec'
 
-config.General.workArea = 'crab_projects'
+config.General.workArea = 'crab_GJets'
 config.General.transferOutputs = True
 config.General.transferLogs = True
 

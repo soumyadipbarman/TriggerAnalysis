@@ -859,7 +859,7 @@ Triggereffi::endJob()
 {
   cout << "Total Event = " << nevt << endl;
   cout << "Total triggerd event = " << ntrig << endl;
-  //cout << "Single Mu trigger  = "<<nSingleMutig<< endl;
+  //cout << "Single Muon trigger  = "<<nSingleMutig<< endl;
   //cout << "Number of simultaneous trigger = "<< nmuonpf <<endl; 
 }
 

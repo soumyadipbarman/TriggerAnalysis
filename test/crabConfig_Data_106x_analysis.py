@@ -13,6 +13,10 @@ config.section_("General")
 #config.General.requestName = 'ESV_Trigger_Run_v2_JetHT_Run2017B-31Mar2018-v1_12April'
 
 config.General.requestName = 'Jet_Charge_JetHT_Run2017B-09Aug2019_UL2017-v1_21Dec'
+#config.General.requestName = 'Jet_Charge_JetHT_Run2017C-09Aug2019_UL2017-v1_21Dec'
+#config.General.requestName = 'Jet_Charge_JetHT_Run2017D-09Aug2019_UL2017-v1_21Dec'
+#config.General.requestName = 'Jet_Charge_JetHT_Run2017E-09Aug2019_UL2017-v1_21Dec'
+#config.General.requestName = 'Jet_Charge_JetHT_Run2017F-09Aug2019_UL2017-v1_21Dec'
 
 config.General.workArea = 'crab_GJets'
 config.General.transferOutputs = True
@@ -24,7 +28,7 @@ config.JobType.allowUndistributedCMSSW = True
 config.JobType.psetName = 'Run_QCD_test_106x_data_cfg.py'
 #config.JobType.inputFiles= [
 #"/afs/cern.ch/work/t/tsarkar/private/QCD-13/CMSSW_7_6_3/src/Test/QCDEventShape/test/Fall15_25nsV2_MC_PtResolution_AK4PFchs.txt", "/afs/cern.ch/work/t/tsarkar/private/QCD-13/CMSSW_7_6_3/src/Test/QCDEventShape/test/Fall15_25nsV2_MC_SF_AK4PFchs.txt", "/afs/cern.ch/work/t/tsarkar/private/QCD-13/CMSSW_7_6_3/src/Test/QCDEventShape/test/Fall15_25nsV2_DATA_UncertaintySources_AK4PF.txt"
-]
+#]
 #config.Data.inputDataset = '/JetHT/Run2017B-17Nov2017-v1/MINIAOD'
 #config.Data.inputDataset = '/JetHT/Run2017B-12Sep2017-v1/MINIAOD'
 #config.Data.inputDataset = '/JetHT/Run2017C-17Nov2017-v1/MINIAOD'

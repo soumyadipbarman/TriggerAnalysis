@@ -14,6 +14,7 @@ process.load("PhysicsTools.PatAlgos.selectionLayer1.selectedPatCandidates_cff")
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(#'/store/mc/Spring14dr/TTJets_MSDecaysCKM_central_Tune4C_13TeV-madgraph-tauola/AODSIM/PU20bx25_POSTLS170_V5-v1/00000/00B6F8B6-90F1-E311-B72C-0025905A6092.root'
 '/store/data/Run2017E/JetHT/MINIAOD/09Aug2019_UL2017-v1/130000/016BE62D-1105-AC4F-8A58-59BD14326D8B.root',
+#'/store/data/Run2017B/JetHT/MINIAOD/09Aug2019_UL2017-v1/260000/E052B6E4-B501-8149-AE3A-0CCBE46AB7A6.root',
 #'/store/data/Run2017E/JetHT/MINIAOD/09Aug2019_UL2017-v1/130000/01BB9E36-70E0-D64A-8164-87AEA03925B2.root',
 #'/store/data/Run2018A/JetHT/MINIAOD/12Nov2019_UL2018-v2/100000/006D4A04-6DF4-7941-B54F-12CEF66AEE20.root',
 #'/store/data/Run2016F/JetHT/MINIAOD/21Feb2020_UL2016-v1/20000/0F71E50E-4F98-1446-B14A-A8600DDA6537.root',
@@ -26,8 +27,8 @@ process.source = cms.Source("PoolSource",
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(10000) )
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(50000) )
 #process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(500) )
-#process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(2000) )
-process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
+process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(2000) )
+#process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 
 #process.load("Configuration.StandardSequences.Geometry_cff")
 #process.load("Configuration.StandardSequences.FrontierConditions_GlobalTag_cff")

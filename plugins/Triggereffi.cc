@@ -559,7 +559,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
             TightJetID =false;
       		}
 
-      if (abs((*ak4PFJets)[0].eta())>2.5) {TightJetID = false;}    //2.5 or 2.6 ??
+      if (abs((*ak4PFJets)[0].eta())>2.6) {TightJetID = false;}    //2.5 or 2.6 ??
       if ((*ak4PFJets)[0].pt()<30.0) {TightJetID = false;}
       //if (((*ak4PFJets)[0].pt()<30.0) && (abs((*ak4PFJets)[0].eta())>2.5)) {TightJetID = false;}
 

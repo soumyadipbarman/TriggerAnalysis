@@ -343,7 +343,8 @@ Triggereffi::Triggereffi(const edm::ParameterSet& iConfig):
       //hlt_dijettrg_fired[ij][jk]->Sumw2();
       sprintf(name, "hlt_singlejet_effi_%i_%i", ij, jk);
       sprintf(title, "singlejet trigger fired: (%s) |i#eta|<%g", jethlt_name[ij], etarange[jk]);
-      hlt_singlejettrg_fired[ij][jk] = fs->make<TH1F>(name, title, 100, 0.4*leadingPtThreshold[ij], 2.5*leadingPtThreshold[ij]);
+      //hlt_singlejettrg_fired[ij][jk] = fs->make<TH1F>(name, title, 100, 0.4*leadingPtThreshold[ij], 2.5*leadingPtThreshold[ij]);
+      hlt_singlejettrg_fired[ij][jk] = fs->make<TH1F>(name, title, 1200, 40, 1240);
       hlt_singlejettrg_fired[ij][jk]->Sumw2();
     }
   }
@@ -358,7 +359,8 @@ Triggereffi::Triggereffi(const edm::ParameterSet& iConfig):
       //hlt_dijettrg_all_evt[ij][jk]->Sumw2();
       sprintf(name, "hlt_singlejet_all_evt_%i_%i", ij, jk);
       sprintf(title, "singlejet trigger All event: (%s) |i#eta|<%g", jethlt_name[ij], etarange[jk]);
-      hlt_singlejettrg_all_evt[ij][jk] = fs->make<TH1F>(name, title, 100, 0.4*leadingPtThreshold[ij], 2.5*leadingPtThreshold[ij]);
+      //hlt_singlejettrg_all_evt[ij][jk] = fs->make<TH1F>(name, title, 100, 0.4*leadingPtThreshold[ij], 2.5*leadingPtThreshold[ij]);
+      hlt_singlejettrg_all_evt[ij][jk] = fs->make<TH1F>(name, title, 1200, 40, 1240);
       hlt_singlejettrg_all_evt[ij][jk]->Sumw2();
     }
   }
@@ -557,7 +559,7 @@ Triggereffi::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
             TightJetID =false;
       		}
 
-      if (abs((*ak4PFJets)[0].eta())>2.6) {TightJetID = false;}    //2.5 or 2.6 ??
+      if (abs((*ak4PFJets)[0].eta())>2.5) {TightJetID = false;}    //2.5 or 2.6 ??
       if ((*ak4PFJets)[0].pt()<30.0) {TightJetID = false;}
       //if (((*ak4PFJets)[0].pt()<30.0) && (abs((*ak4PFJets)[0].eta())>2.5)) {TightJetID = false;}
 
